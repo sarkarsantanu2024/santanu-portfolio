@@ -1,0 +1,173 @@
+{
+  "nav": {
+    "logo": "SS",
+    "brand": "Santanu Sarkar",
+    "links": [
+      { "href": "#about", "label": "About" },
+      { "href": "#skills", "label": "Skills" },
+      { "href": "#experience", "label": "Experience" },
+      { "href": "#projects", "label": "Work" },
+      { "href": "#contact", "label": "Contact" }
+    ],
+    "cta": { "label": "Say Hello", "href": "mailto:sarkarsantanu69@gmail.com" }
+  },
+  "hero": {
+    "eyebrow": "Frontend Architect · Kolkata, India",
+    "heading": "Hi, I'm Santanu.",
+    "subheading": "I design and build considered interfaces for the web.",
+    "description": "For the last decade I've been shaping frontends at Webspiders — from pixel-perfect theming to large React, Vue and Next.js systems on headless Drupal. I care about typography, performance, and code that ages well.",
+    "buttonLabel": "See Selected Work",
+    "buttonHref": "#projects",
+    "secondaryLabel": "Get in Touch",
+    "secondaryHref": "mailto:sarkarsantanu69@gmail.com",
+    "imageSrc": "https://picsum.photos/seed/santanu-pro/400/480",
+    "meta": [
+      { "label": "Based in", "value": "Kolkata, India" },
+      { "label": "Currently", "value": "Webspiders Pvt. Ltd" },
+      { "label": "Available for", "value": "Select frontend work" }
+    ]
+  },
+  "about": {
+    "sectionLabel": "01 — About",
+    "title": "A frontend practice, ten years in.",
+    "description": [
+      "I'm a frontend architect based in Kolkata. For the past decade I've led frontend at Webspiders Pvt. Ltd, shipping enterprise web platforms for clients in India, Singapore and beyond.",
+      "My day-to-day spans the full frontend stack — modular React and Vue 3 component systems, Next.js App Router patterns (SSR, ISR, dynamic routing), and headless Drupal integrations over REST / JSON:API.",
+      "Outside the stack, I care about the craft: accessible markup, sustainable patterns, sensible performance budgets, and interfaces that feel calm rather than loud."
+    ],
+    "highlights": [
+      "Headless Drupal + Next.js architectures",
+      "Core Web Vitals and performance budgets",
+      "Accessible, semantic, well-structured markup",
+      "AI-assisted workflows with Copilot, Claude, Cursor"
+    ]
+  },
+  "skills": {
+    "sectionLabel": "02 — Skills",
+    "title": "Things I work with.",
+    "groups": [
+      {
+        "heading": "Languages & Markup",
+        "items": ["HTML5", "CSS3 / SCSS", "JavaScript (ES6+)", "TypeScript"]
+      },
+      {
+        "heading": "Frameworks",
+        "items": ["React", "Next.js (App Router)", "Vue 3", "Nuxt"]
+      },
+      {
+        "heading": "Styling & Design",
+        "items": ["Tailwind CSS", "Bootstrap 5", "GSAP", "Figma"]
+      },
+      {
+        "heading": "Backend & Platform",
+        "items": ["Headless Drupal", "REST / JSON:API", "SEO / Core Web Vitals", "AI dev tools"]
+      }
+    ]
+  },
+  "experience": {
+    "sectionLabel": "03 — Experience",
+    "title": "Where I've worked.",
+    "roles": [
+      {
+        "title": "Frontend Developer → Frontend Architect",
+        "company": "Webspiders Pvt. Ltd · Kolkata & Singapore",
+        "period": "Mar 2015 – Present",
+        "current": true,
+        "bullets": [
+          "Led end-to-end frontend for enterprise and SaaS products.",
+          "Translated Figma systems into modular React and Vue components.",
+          "Built headless Drupal + React / Next.js frontends on REST and JSON:API.",
+          "Raised Lighthouse scores and tightened Core Web Vitals across projects.",
+          "Mentored junior developers on component architecture and code quality."
+        ]
+      },
+      {
+        "title": "HTML Developer",
+        "company": "Budli.in",
+        "period": "Sep 2014 – Feb 2015",
+        "bullets": [
+          "Built mobile-optimized landing pages for paid campaigns.",
+          "Improved product page UX, navigation and checkout flow.",
+          "Fixed frontend and cross-browser issues across the site."
+        ]
+      },
+      {
+        "title": "HTML Developer",
+        "company": "Delgence",
+        "period": "Apr 2012 – Sep 2014",
+        "bullets": [
+          "Built client websites with a focus on responsive layout.",
+          "Applied accessibility and performance best practices."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "sectionLabel": "04 — Selected Work",
+    "title": "A few recent projects.",
+    "items": [
+      {
+        "title": "IPI Singapore",
+        "year": "2024 / 25",
+        "url": "https://www.ipi-singapore.org/",
+        "image": "https://picsum.photos/seed/ipisg22/800/450",
+        "description": "Innovation marketplace portal — frontend architected end-to-end in Next.js App Router on headless Drupal.",
+        "tags": ["React", "Next.js", "Drupal", "Tailwind", "GSAP"]
+      },
+      {
+        "title": "SpiderX.ai",
+        "year": "2023 / 24",
+        "url": "https://www.spiderx.ai/",
+        "image": "https://picsum.photos/seed/spiderx55/800/450",
+        "description": "Marketing site for a generative voice-agents platform — custom interactions, pixel-perfect delivery.",
+        "tags": ["HTML5", "Bootstrap 5", "jQuery", "Drupal"]
+      },
+      {
+        "title": "PeerlessOne.in",
+        "year": "2023",
+        "url": "https://www.peerlessone.in/",
+        "image": "https://picsum.photos/seed/finance33/800/450",
+        "description": "Financial services platform on a Vue 3 / Nuxt frontend integrated with Drupal CMS.",
+        "tags": ["Vue 3", "Nuxt", "Bootstrap 5", "Drupal"]
+      }
+    ]
+  },
+  "contact": {
+    "sectionLabel": "05 — Contact",
+    "title": "Say hello.",
+    "description": "I'm open to select frontend roles and collaborations. The fastest way to reach me is email.",
+    "items": [
+      { "icon": "email", "label": "Email", "value": "sarkarsantanu69@gmail.com", "href": "mailto:sarkarsantanu69@gmail.com" },
+      { "icon": "phone", "label": "Phone", "value": "+91 9804 243 159", "href": "tel:+919804243159" },
+      { "icon": "location_on", "label": "Location", "value": "Kolkata, West Bengal, India", "href": null }
+    ],
+    "primaryCta": { "label": "sarkarsantanu69@gmail.com", "href": "mailto:sarkarsantanu69@gmail.com" },
+    "secondaryCta": { "label": "LinkedIn", "href": "https://linkedin.com/in/santanu-sarkar-095b163b" }
+  },
+  "footer": {
+    "brand": "Santanu Sarkar",
+    "copyright": "© 2025 Santanu Sarkar · Frontend Architect · Kolkata, India",
+    "links": [
+      { "label": "Email", "href": "mailto:sarkarsantanu69@gmail.com" },
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/santanu-sarkar-095b163b" }
+    ]
+  },
+  "theme": {
+    "light": {
+      "background": "#f8fafc",
+      "surface": "#ffffff",
+      "muted": "#6b7280",
+      "text": "#0f172a",
+      "primary": "#2563EB",
+      "card": "#ffffff"
+    },
+    "dark": {
+      "background": "#020617",
+      "surface": "#0f172a",
+      "muted": "#94a3b8",
+      "text": "#f8fafc",
+      "primary": "#7c3aed",
+      "card": "#111827"
+    }
+  }
+}
