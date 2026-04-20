@@ -2,15 +2,11 @@
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     const saved = window.localStorage.getItem("site-theme");
-    const preferred =
-      saved ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+    const preferred = saved || "dark";
     setTheme(preferred);
     document.documentElement.classList.toggle("dark", preferred === "dark");
   }, []);
