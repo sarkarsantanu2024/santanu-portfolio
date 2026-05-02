@@ -19,15 +19,50 @@ body {
 
 /* ── Scrollbar ────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #E5E2D8; }
+::-webkit-scrollbar-track { background: #E8E5DC; }
 ::-webkit-scrollbar-thumb { background: #B8B5A8; border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: #FFC93C; }
-.dark ::-webkit-scrollbar-track { background: #24253A; }
-.dark ::-webkit-scrollbar-thumb { background: #45465C; }
+.dark ::-webkit-scrollbar-track { background: #08080B; }
+.dark ::-webkit-scrollbar-thumb { background: #2D2D34; }
 .dark ::-webkit-scrollbar-thumb:hover { background: #FFC93C; }
 
 /* ── Selection ────────────────────────────── */
-::selection { background: #FFC93C; color: #2D2E41; }
+::selection { background: #FFC93C; color: #0E0E12; }
+
+/* ── Dotted grid pattern (victoreke-inspired texture) ─ */
+.bg-dotted {
+  background-image: radial-gradient(circle at 1px 1px, rgba(45, 46, 65, 0.07) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+.dark .bg-dotted {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+}
+
+/* ── Subtle grid pattern (alternate texture for hero/feature areas) ─ */
+.bg-grid-soft {
+  background-image:
+    linear-gradient(rgba(45, 46, 65, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 46, 65, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.dark .bg-grid-soft {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* ── Soft amber radial glow (for hero / first-fold accents) ─ */
+.bg-glow-amber::before {
+  content: "";
+  position: absolute;
+  inset: -10% -10% auto auto;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(closest-side, rgba(255, 201, 60, 0.18), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
 
 /* ── Focus ────────────────────────────────── */
 a:focus-visible, button:focus-visible {
@@ -95,11 +130,11 @@ a:focus-visible, button:focus-visible {
 
 /* ── Nav scroll ──────────────────────────── */
 .nav-scrolled {
-  background: rgba(246, 244, 238, 0.9);
+  background: rgba(250, 248, 242, 0.85);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(45, 46, 65, 0.08);
+  border-bottom: 1px solid rgba(14, 14, 18, 0.08);
 }
 .dark .nav-scrolled {
-  background: rgba(45, 46, 65, 0.9);
+  background: rgba(8, 8, 11, 0.85);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }

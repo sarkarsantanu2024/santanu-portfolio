@@ -9,8 +9,17 @@
       { "href": "#projects", "label": "Work" },
       { "href": "#contact", "label": "Contact" }
     ],
-    "cta": { "label": "Say Hello", "href": "mailto:sarkarsantanu69@gmail.com" }
+    "cta": { "label": "Say Hello", "href": "mailto:sarkarsantanu69@gmail.com" },
+    "phone": { "label": "Call Santanu", "href": "tel:+919804243159" },
+    "resume": { "label": "Resume", "href": "/pdf/santanu-sarkar-resume.pdf", "fileName": "santanu-sarkar-resume.pdf" }
   },
+  "socials": [
+    { "label": "Facebook", "href": "https://www.facebook.com/sarkarsantanu69", "icon": "facebook" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/santanusarkar86/", "icon": "linkedin" },
+    { "label": "GitHub", "href": "https://github.com/sarkarsantanu2024", "icon": "github" },
+    { "label": "Portfolio", "href": "https://santanu-portfolio-alpha.vercel.app/", "icon": "portfolio" },
+    { "label": "WhatsApp", "href": "https://wa.me/919804243159", "icon": "whatsapp" }
+  ],
   "hero": {
     "eyebrow": "Frontend Architect · Kolkata, India",
     "heading": "Hi, I'm Santanu.",
@@ -20,7 +29,7 @@
     "buttonHref": "#projects",
     "secondaryLabel": "Get in Touch",
     "secondaryHref": "mailto:sarkarsantanu69@gmail.com",
-    "imageSrc": "https://picsum.photos/seed/santanu-pro/400/480",
+    "imageSrc": "images/hero-profilee.png",
     "meta": [
       { "label": "Based in", "value": "Kolkata, India" },
       { "label": "Currently", "value": "Webspiders Pvt. Ltd" },
@@ -110,7 +119,7 @@
         "title": "IPI Singapore",
         "year": "2024 / 25",
         "url": "https://www.ipi-singapore.org/",
-        "image": "https://picsum.photos/seed/ipisg22/800/450",
+        "image": "images/ipi-singapore.jpg",
         "description": "Innovation marketplace portal — frontend architected end-to-end in Next.js App Router on headless Drupal.",
         "tags": ["React", "Next.js", "Drupal", "Tailwind", "GSAP"]
       },
@@ -118,7 +127,7 @@
         "title": "SpiderX.ai",
         "year": "2023 / 24",
         "url": "https://www.spiderx.ai/",
-        "image": "https://picsum.photos/seed/spiderx55/800/450",
+        "image": "images/spiderx-ai.jpg",
         "description": "Marketing site for a generative voice-agents platform — custom interactions, pixel-perfect delivery.",
         "tags": ["HTML5", "Bootstrap 5", "jQuery", "Drupal"]
       },
@@ -126,7 +135,7 @@
         "title": "PeerlessOne.in",
         "year": "2023",
         "url": "https://www.peerlessone.in/",
-        "image": "https://picsum.photos/seed/finance33/800/450",
+        "image": "images/peerlessone-in.jpg",
         "description": "Financial services platform on a Vue 3 / Nuxt frontend integrated with Drupal CMS.",
         "tags": ["Vue 3", "Nuxt", "Bootstrap 5", "Drupal"]
       }

@@ -10,12 +10,13 @@ import Projects from "@/components/Projects.jsx";
 import Contact from "@/components/Contact.jsx";
 import Footer from "@/components/Footer.jsx";
 import BackToTop from "@/components/ui/BackToTop.jsx";
+import FloatingSocials from "@/components/ui/FloatingSocials.jsx";
 
 export default function Home() {
   return (
     <>
       <Navbar nav={siteData.nav} />
-      <main className="bg-paper dark:bg-ink">
+      <main className="bg-paper dark:bg-ink bg-dotted">
         <Hero hero={siteData.hero} />
         <About about={siteData.about} />
         <Skills skills={siteData.skills} />
@@ -24,6 +25,7 @@ export default function Home() {
         <Contact contact={siteData.contact} />
       </main>
       <Footer footer={siteData.footer} />
+      <FloatingSocials socials={siteData.socials} />
       <BackToTop />
     </>
   );

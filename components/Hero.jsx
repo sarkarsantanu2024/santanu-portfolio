@@ -74,7 +74,7 @@ export default function Hero({ hero }) {
             <p className="hero-role text-lg sm:text-xl text-ink/70 dark:text-slate-300 mb-4 max-w-xl leading-snug">
               {hero.subheading}
             </p>
-            <p className="hero-desc max-w-xl text-base leading-[1.75] text-ink/60 dark:text-slate-400 mb-10">
+            <p className="hero-desc max-w-xl text-xl text-ink/90 dark:text-slate-400 mb-10">
               {hero.description}
             </p>
 
@@ -97,12 +97,12 @@ export default function Hero({ hero }) {
           </div>
 
           <div className="hero-image relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-[4/5]">
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-[14px] overflow-hidden">
               <div className="hero-highlight" />
               <img
                 src={hero.imageSrc}
                 alt={hero.heading}
-                className="relative z-10 w-full h-full object-cover rounded-t-[14px]"
+                className="relative z-10 w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
@@ -143,8 +143,8 @@ export default function Hero({ hero }) {
                 {s.subtitle}
               </div>
               <div
-                className={`text-xs font-medium ${
-                  i === 0 ? "text-ink/70" : "text-ink/50 dark:text-slate-500"
+                className={`text-base font-medium ${
+                  i === 0 ? "text-ink" : "text-ink/50 dark:text-white"
                 }`}
               >
                 {s.count}

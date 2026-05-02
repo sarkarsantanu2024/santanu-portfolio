@@ -8,6 +8,9 @@ export const metadata = {
     "Frontend Architect, React Developer, Vue Developer, Next.js, Drupal Headless CMS, Tailwind CSS, GSAP, Frontend Developer Kolkata, AI-aided development, Santanu Sarkar",
   authors: [{ name: "Santanu Sarkar" }],
   robots: "index, follow",
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "any" }],
+  },
   openGraph: {
     type: "website",
     title: "Santanu Sarkar | Frontend Architect",
