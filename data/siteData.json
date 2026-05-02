@@ -17,7 +17,7 @@
     { "label": "Facebook", "href": "https://www.facebook.com/sarkarsantanu69", "icon": "facebook" },
     { "label": "LinkedIn", "href": "https://www.linkedin.com/in/santanusarkar86/", "icon": "linkedin" },
     { "label": "GitHub", "href": "https://github.com/sarkarsantanu2024", "icon": "github" },
-    { "label": "Portfolio", "href": "https://santanu-portfolio-alpha.vercel.app/", "icon": "portfolio" },
+    { "label": "Portfolio", "href": "https://santanu-portfolio-frontend.vercel.app", "icon": "portfolio" },
     { "label": "WhatsApp", "href": "https://wa.me/919804243159", "icon": "whatsapp" }
   ],
   "hero": {
