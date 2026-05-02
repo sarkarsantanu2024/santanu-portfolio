@@ -10,12 +10,12 @@ module.exports = {
       },
       colors: {
         ink: {
-          DEFAULT: "#2D2E41",
-          deep: "#24253A",
-          soft: "#363749",
-          card: "#363749",
-          raised: "#3E3F54",
-          line: "#45465C",
+          DEFAULT: "#0E0E12",
+          deep: "#08080B",
+          soft: "#16161B",
+          card: "#1A1A20",
+          raised: "#232329",
+          line: "#2D2D34",
         },
         amber: {
           brand: "#FFC93C",
@@ -23,18 +23,31 @@ module.exports = {
           deep: "#E5A82D",
         },
         paper: {
-          DEFAULT: "#F6F4EE",
+          DEFAULT: "#FAF8F2",
           soft: "#FFFFFF",
-          line: "#E5E2D8",
+          line: "#E8E5DC",
         },
         navy: {
-          DEFAULT: "#24253A",
-          light: "#3E3F54",
+          DEFAULT: "#08080B",
+          light: "#232329",
         },
         brand: {
           DEFAULT: "#FFC93C",
           dark: "#E5A82D",
         },
+        muted: {
+          DEFAULT: "#71717A",
+          dark: "#52525B",
+        },
+      },
+      backgroundImage: {
+        "dot-grid":
+          "radial-gradient(circle at 1px 1px, rgba(45, 46, 65, 0.08) 1px, transparent 0)",
+        "dot-grid-dark":
+          "radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0)",
+      },
+      backgroundSize: {
+        "dot-grid": "22px 22px",
       },
     },
   },

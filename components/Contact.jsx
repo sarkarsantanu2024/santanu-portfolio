@@ -43,9 +43,9 @@ export default function Contact({ contact }) {
     <section
       id="contact"
       ref={ref}
-      className="py-28 md:py-32 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5"
+      className="py-20 md:py-28 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5"
     >
-      <div className="max-w-6xl mx-auto px-5 lg:px-10 contact-inner">
+      <div className="max-w-7xl mx-auto px-5 lg:px-10 contact-inner">
         <SectionHeading label={contact.sectionLabel} title={contact.title} />
 
         <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-14 items-end mt-4">
@@ -91,7 +91,10 @@ export default function Contact({ contact }) {
 
         <dl className="grid sm:grid-cols-3 gap-6 mt-16 pt-10 border-t border-ink/10 dark:border-white/10">
           {contact.items.map((item) => (
-            <div key={item.label} className="bg-white dark:bg-ink-card border border-ink/5 dark:border-transparent rounded-2xl p-5">
+            <div
+              key={item.label}
+              className="bg-white dark:bg-ink-card border border-ink/5 dark:border-transparent rounded-2xl p-5"
+            >
               <dt className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-amber-brand mb-2">
                 <span className="material-icons sm">{item.icon}</span>
                 {item.label}
@@ -111,18 +114,6 @@ export default function Contact({ contact }) {
             </div>
           ))}
         </dl>
-
-        <div className="mt-8">
-          <a
-            href={contact.secondaryCta.href}
-            target="_blank"
-            rel="noopener"
-            className="inline-flex items-center gap-1.5 text-base font-medium text-ink/70 dark:text-slate-300 hover:text-amber-brand transition-colors"
-          >
-            Also on {contact.secondaryCta.label}
-            <span className="material-icons sm">arrow_outward</span>
-          </a>
-        </div>
       </div>
     </section>
   );

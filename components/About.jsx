@@ -13,7 +13,11 @@ export default function About({ about }) {
       gsap.registerPlugin(ScrollTrigger);
       ctx = gsap.context(() => {
         gsap.from(".about-hdr > *", {
-          scrollTrigger: { trigger: ".about-hdr", start: "top 88%", once: true },
+          scrollTrigger: {
+            trigger: ".about-hdr",
+            start: "top 88%",
+            once: true,
+          },
           y: 22,
           opacity: 0,
           duration: 0.6,
@@ -48,9 +52,9 @@ export default function About({ about }) {
     <section
       id="about"
       ref={ref}
-      className="py-28 md:py-32 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5"
+      className="py-20 md:py-28 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5"
     >
-      <div className="max-w-6xl mx-auto px-5 lg:px-10">
+      <div className="max-w-7xl mx-auto px-5 lg:px-10">
         <div className="about-hdr">
           <SectionHeading label={about.sectionLabel} title={about.title} />
         </div>

@@ -22,7 +22,11 @@ export default function Projects({ projects }) {
           clearProps: "all",
         });
         gsap.from(".project-featured", {
-          scrollTrigger: { trigger: ".project-featured", start: "top 85%", once: true },
+          scrollTrigger: {
+            trigger: ".project-featured",
+            start: "top 85%",
+            once: true,
+          },
           y: 40,
           opacity: 0,
           duration: 0.8,
@@ -30,7 +34,11 @@ export default function Projects({ projects }) {
           clearProps: "all",
         });
         gsap.from(".project-card", {
-          scrollTrigger: { trigger: ".proj-grid", start: "top 85%", once: true },
+          scrollTrigger: {
+            trigger: ".proj-grid",
+            start: "top 85%",
+            once: true,
+          },
           y: 30,
           opacity: 0,
           duration: 0.65,
@@ -56,9 +64,12 @@ export default function Projects({ projects }) {
         style={{ background: "#FFC93C" }}
       />
 
-      <div className="max-w-6xl mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-7xl mx-auto px-5 lg:px-10 relative">
         <div className="proj-hdr flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading label={projects.sectionLabel} title={projects.title} />
+          <SectionHeading
+            label={projects.sectionLabel}
+            title={projects.title}
+          />
           <a
             href="mailto:sarkarsantanu69@gmail.com"
             className="mb-12 hidden md:inline-flex items-center gap-2 text-base font-medium text-amber-brand hover:text-ink dark:hover:text-white transition-colors"
@@ -164,12 +175,12 @@ export default function Projects({ projects }) {
                         {String(i + 2).padStart(2, "0")}
                       </span>
                       <span className="w-6 h-px bg-amber-brand/60" />
-                      <span className="text-ink/60 dark:text-slate-400">{p.year}</span>
+                      <span className="text-ink/60 dark:text-slate-400">
+                        {p.year}
+                      </span>
                     </div>
                     <span className="inline-flex items-center gap-1 text-[11px] uppercase tracking-[0.15em] text-ink/50 dark:text-slate-500">
-                      <span
-                        className="w-1.5 h-1.5 rounded-full bg-emerald-400"
-                      />
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                       Live
                     </span>
                   </div>
@@ -194,7 +205,7 @@ export default function Projects({ projects }) {
             </article>
           ))}
 
-          <a
+          {/* <a
             href="mailto:sarkarsantanu69@gmail.com"
             className="project-card group rounded-3xl overflow-hidden bg-paper dark:bg-ink-card border border-ink/5 dark:border-transparent hover:bg-amber-brand dark:hover:bg-amber-brand transition-colors flex items-center justify-center min-h-[260px] p-8"
           >
@@ -213,7 +224,7 @@ export default function Projects({ projects }) {
                 <span className="material-icons sm">arrow_outward</span>
               </span>
             </div>
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

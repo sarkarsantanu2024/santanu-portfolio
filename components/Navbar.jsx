@@ -89,6 +89,17 @@ export default function Navbar({ nav }) {
             {nav.cta.label}
             <span className="material-icons sm">arrow_outward</span>
           </a>
+          {nav.resume?.href && (
+            <a
+              href={nav.resume.href}
+              download={nav.resume.fileName || true}
+              onClick={() => setDrawerOpen(false)}
+              className="inline-flex self-start items-center gap-2 px-5 py-3 rounded-full border border-ink/20 text-ink dark:border-white/20 dark:text-white text-base font-semibold"
+            >
+              {nav.resume.label}
+              <span className="material-icons sm">file_download</span>
+            </a>
+          )}
         </nav>
       </aside>
 
@@ -125,6 +136,26 @@ export default function Navbar({ nav }) {
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
+            {nav.phone?.href && (
+              <a
+                href={nav.phone.href}
+                aria-label={nav.phone.label}
+                title={nav.phone.label}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink hover:bg-amber-brand hover:text-ink hover:border-transparent dark:border-white/15 dark:text-white transition-colors"
+              >
+                <span className="material-icons sm">call</span>
+              </a>
+            )}
+            {nav.resume?.href && (
+              <a
+                href={nav.resume.href}
+                download={nav.resume.fileName || true}
+                className="hidden md:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-ink/20 text-ink text-base font-semibold hover:bg-ink hover:text-paper dark:border-white/20 dark:text-white dark:hover:bg-white dark:hover:text-ink transition-colors"
+              >
+                {nav.resume.label}
+                <span className="material-icons sm">file_download</span>
+              </a>
+            )}
             <a
               href={nav.cta.href}
               className="hidden md:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-amber-brand text-ink text-base font-semibold hover:bg-white transition-colors"

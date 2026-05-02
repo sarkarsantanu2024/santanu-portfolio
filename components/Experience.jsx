@@ -74,14 +74,9 @@ export default function Experience({ experience }) {
     <section
       id="experience"
       ref={ref}
-      className="py-28 md:py-32 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5 relative overflow-hidden"
+      className="py-20 md:py-28 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5 relative overflow-hidden"
     >
-      <div
-        className="absolute top-40 right-0 w-[460px] h-[460px] rounded-full blur-[130px] opacity-[0.07] pointer-events-none"
-        style={{ background: "#FFC93C" }}
-      />
-
-      <div className="max-w-6xl mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-7xl mx-auto px-5 lg:px-10 relative">
         <div className="exp-hdr flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             label={experience.sectionLabel}
@@ -126,7 +121,9 @@ export default function Experience({ experience }) {
                       {end && (
                         <div
                           className={`text-xs uppercase tracking-[0.15em] mt-1 ${
-                            job.current ? "text-amber-brand" : "text-ink/60 dark:text-slate-400"
+                            job.current
+                              ? "text-amber-brand"
+                              : "text-ink/60 dark:text-slate-400"
                           }`}
                         >
                           {end}
@@ -163,7 +160,9 @@ export default function Experience({ experience }) {
                           {end && (
                             <span
                               className={`ml-2 text-xs uppercase tracking-[0.15em] ${
-                                job.current ? "text-amber-brand" : "text-ink/60 dark:text-slate-400"
+                                job.current
+                                  ? "text-amber-brand"
+                                  : "text-ink/60 dark:text-slate-400"
                               }`}
                             >
                               — {end}
@@ -173,11 +172,6 @@ export default function Experience({ experience }) {
                       </div>
 
                       <article className="group relative bg-white dark:bg-ink-card border border-ink/5 dark:border-transparent rounded-2xl p-6 md:p-7 hover:bg-paper-line dark:hover:bg-ink-raised transition-all hover:-translate-y-0.5 hover:shadow-2xl">
-                        <div
-                          aria-hidden
-                          className="hidden md:block absolute top-7 -left-3 w-3 h-3 rotate-45 bg-white dark:bg-ink-card group-hover:bg-paper-line dark:group-hover:bg-ink-raised transition-colors"
-                        />
-
                         {job.current && (
                           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-brand/15 text-amber-brand text-[11px] font-bold uppercase tracking-[0.15em] mb-4">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-brand animate-pulse" />
@@ -244,32 +238,6 @@ export default function Experience({ experience }) {
                 </li>
               );
             })}
-
-            <li className="relative">
-              <div className="md:grid md:grid-cols-[200px_44px_1fr] md:gap-x-6 md:items-center">
-                <div className="hidden md:block" />
-                <div className="absolute md:static left-0 top-1 md:top-0 flex md:justify-center">
-                  <div className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-paper dark:bg-ink flex items-center justify-center border border-dashed border-ink/20 dark:border-white/20">
-                    <span
-                      className="material-icons text-ink/50 dark:text-slate-500"
-                      style={{ fontSize: 16 }}
-                    >
-                      more_horiz
-                    </span>
-                  </div>
-                </div>
-                <div className="pl-16 md:pl-0 text-sm text-ink/60 dark:text-slate-400">
-                  The rest of the story —{" "}
-                  <a
-                    href="mailto:sarkarsantanu69@gmail.com"
-                    className="text-amber-brand font-medium hover:text-ink dark:hover:text-white transition-colors"
-                  >
-                    ask for the full CV
-                  </a>
-                  .
-                </div>
-              </div>
-            </li>
           </ul>
         </div>
       </div>
