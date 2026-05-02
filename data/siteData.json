@@ -29,7 +29,7 @@
     "buttonHref": "#projects",
     "secondaryLabel": "Get in Touch",
     "secondaryHref": "mailto:sarkarsantanu69@gmail.com",
-    "imageSrc": "images/hero-profilee.png",
+    "imageSrc": "images/hero-profile.png",
     "meta": [
       { "label": "Based in", "value": "Kolkata, India" },
       { "label": "Currently", "value": "Webspiders Pvt. Ltd" },
