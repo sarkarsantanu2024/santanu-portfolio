@@ -1,7 +1,9 @@
 "use client";
 
 import siteData from "@/data/siteData.json";
+import caseStudies from "@/data/caseStudies.json";
 import Navbar from "@/components/Navbar.jsx";
+import CaseStudies from "@/components/CaseStudies.jsx";
 import Hero from "@/components/Hero.jsx";
 import About from "@/components/About.jsx";
 import Skills from "@/components/Skills.jsx";
@@ -22,6 +24,7 @@ export default function Home() {
         <Skills skills={siteData.skills} />
         <Experience experience={siteData.experience} />
         <Projects projects={siteData.projects} />
+        <CaseStudies caseStudies={caseStudies} />
         <Contact contact={siteData.contact} />
       </main>
       <Footer footer={siteData.footer} />

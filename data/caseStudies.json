@@ -1,0 +1,209 @@
+{
+  "sectionLabel": "05 — Case Studies",
+  "title": "Three products I own end to end.",
+  "intro": "Personal products built under Nexvora Technologies, my own MSME in Kolkata. Each one is live, open on GitHub, and was audited before being written up here. Where a number is not shown, it is because I cannot show it yet — nothing below is invented.",
+  "roleStatement": "Built solo with AI coding assistants (Claude Code). I owned the product design, architecture and data model, directed the implementation, reviewed and tested the output, ran QA, and handled deployment and production incidents.",
+  "items": [
+    {
+      "slug": "halkhata",
+      "title": "Halkhata",
+      "kicker": "QR ordering and a credit ledger for local shops",
+      "year": "2026",
+      "status": "Live · in use by real shops",
+      "statusTone": "live",
+      "summary": "A multi-tenant PWA for Indian kirana, sweet and street-food shops. Customers order by scanning a QR code with no app and no account; owners run orders, a counter till with UPI QR and an udhaar (credit) book in English, Bengali or Hindi.",
+      "accent": "#FFC93C",
+      "monogram": "হ",
+      "links": {
+        "live": "https://halkhata.nexvoratechnologies.co.in",
+        "repo": "https://github.com/sarkarsantanu2024/dukaanflow"
+      },
+      "tags": ["Next.js 15", "TypeScript", "Prisma", "Neon Postgres", "PWA", "Web Push"],
+      "stack": "Next.js 15 (App Router, route handlers for mutations only) · React 19 · TypeScript strict · Tailwind · Prisma 6 on Neon Postgres · zod · bcrypt · Web Crypto HMAC · web-push · Vitest · Vercel",
+      "sections": [
+        {
+          "heading": "The problem",
+          "body": [
+            "Regular customers' orders arrive in the shopkeeper's family WhatsApp chats and get lost. Counters are crowded at peak hours. The credit ledger is a paper notebook that starts arguments. And owners avoid software that takes a commission, needs an email address, or asks them to type.",
+            "So the product rules were set first and the code followed them: no commission ever, no owner login beyond a 6-digit PIN or a one-time WhatsApp link, voice as the primary input on a phone, and the server as the only authority on money."
+          ]
+        },
+        {
+          "heading": "Architecture",
+          "bullets": [
+            "Three surfaces on one Next.js app: a public storefront at /shop/[slug], an owner app scoped to exactly one shop, and a single Super Admin console.",
+            "Reads go straight to Prisma from Server Components; route handlers exist only for mutations, every one POST, PATCH or DELETE.",
+            "Stateless HMAC-signed cookies built on Web Crypto, so the Edge middleware can verify them without a database; Node re-verifies against the database before any write.",
+            "Web push for new-order alerts, treated as an accelerator and never the system of record — the phones this market runs on kill background processes.",
+            "Two Vercel crons: a nightly roll-up and retention purge, and trial notices. Vercel in Singapore, Neon in the same region."
+          ]
+        },
+        {
+          "heading": "Decisions I would defend in a review",
+          "bullets": [
+            "Money is integer paise end to end. The client sends item ids and quantities only; prices, delivery charge and minimum order are recomputed on the server for every order.",
+            "Orders are idempotent. A client-minted key sits under a unique constraint, and a duplicate replays the original order instead of creating a second one.",
+            "Stock decrements are race-safe: a conditional updateMany inside the same transaction as the sale, so two counters cannot both sell the last packet.",
+            "The khata balance is never stored. It is always summed from append-only entries — a running total that can drift from its own history is how a paper book starts a dispute.",
+            "Every self-contained session carries a version of the credential it was issued against: the shop's PIN timestamp for owners, the admin credential's updatedAt for the Super Admin. Reissuing a PIN or changing the password revokes every device.",
+            "Photo-to-item AI is barcode-first, and Bengali and Hindi names come from a local vocabulary rather than the model; the owner confirms every suggestion."
+          ]
+        },
+        {
+          "heading": "What went wrong, and what I changed",
+          "bullets": [
+            "Production data loss (2026-08-28). A schema command run from a laptop whose .env pointed at production dropped and recreated every table. I wrote it up, added a database-target guard that names the host and refuses production unless explicitly overridden, and moved the rupee-to-paise conversion into guarded SQL. The incident is in the repo, not hidden.",
+            "The retention purge was deleting partial years, which silently overwrote the yearly roll-up totals the festival comparisons depend on. The purge now deletes whole calendar years only.",
+            "A shop's one-time invite link survived a PIN reissue or revoke. It is now retired at the same moment.",
+            "A counter sale was two writes; a failure between them left a sale with no stock movement. It is one transaction with an atomic, conditional stock decrement.",
+            "The admin session had no credential version, so changing the password did not sign out the laptop it was changed because of. The token now carries one, and the Node-side guard refuses stale ones.",
+            "Rate limits were a Map in process memory — one allowance per serverless instance, reset on every cold start. They now live in Postgres as one atomic upsert per hit, with an in-memory fallback so a database blip can never lock a till."
+          ]
+        },
+        {
+          "heading": "Security, testing and delivery",
+          "bullets": [
+            "Shop scoping on every owner write; CSRF by Origin check; bcrypt with a decoy hash so a wrong username costs the same time as a wrong password; a cron secret that fails closed.",
+            "Vitest covers the money arithmetic, retention windows, session tokens and the rate-limit window logic. A scripted and manual QA pass of about 600 cases is recorded in the repo's QA report.",
+            "Push-to-deploy on Vercel. Schema changes go through the guarded db:push and are applied to production deliberately, never by accident."
+          ]
+        },
+        {
+          "heading": "Results and what is next",
+          "body": [
+            "Halkhata is live and in use by real shops. I am not publishing shop or order counts until I can show them; they are available on request.",
+            "Next: a Neon dev branch so local work never touches production, a baseline for the Prisma migration history, object storage for photos, and an evaluation set for the photo AI."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "eduflow",
+      "title": "EduFlow",
+      "kicker": "Fees, attendance and WhatsApp reminders for coaching centres",
+      "year": "2026",
+      "status": "Live · real centres",
+      "statusTone": "live",
+      "summary": "A multi-tenant SaaS for abacus, tuition, dance, music and other training centres, and for franchise head offices. Students, monthly fees with a pre-filled UPI QR, expenses, attendance, tests, certificates and one-tap WhatsApp reminders — with no payment gateway and no WhatsApp API.",
+      "accent": "#7C3AED",
+      "monogram": "E",
+      "links": {
+        "live": "https://eduflow.nexvoratechnologies.co.in",
+        "repo": "https://github.com/sarkarsantanu2024/eduflow"
+      },
+      "tags": ["Next.js 15", "Drizzle ORM", "Neon Postgres", "Auth.js", "Server Actions", "PGlite tests"],
+      "stack": "Next.js 15 (App Router, Server Actions) · React 19 · TypeScript strict · Tailwind + shadcn/ui · Drizzle ORM on Neon (neon-http) · Auth.js v5 · Vercel Blob · Vitest with PGlite · Vercel",
+      "sections": [
+        {
+          "heading": "The problem",
+          "body": [
+            "A small centre's owner collects monthly fees in cash and UPI, chases defaulters on WhatsApp from memory, and keeps attendance on paper. The tools built for schools are too big and too expensive, and anything that needs a payment gateway or the WhatsApp Business API is out of reach.",
+            "EduFlow keeps the parts that work — the owner's own WhatsApp number, a UPI QR with the amount already filled in — and automates the remembering: which month is due, who is overdue, whose birthday it is."
+          ]
+        },
+        {
+          "heading": "Architecture",
+          "bullets": [
+            "Multi-tenant by institute id, enforced in the application layer: every read and write filters by the caller's institute, the tenant id is stripped from every client patch, and head-office access to a branch is re-verified on every request rather than trusted from a cookie.",
+            "Four roles: platform super-admin, franchise head office, centre owner, and a limited teacher login. Teachers may write only attendance, tests, performance and promotions.",
+            "One server action hydrates a small client store for the whole centre; writes are optimistic with a server round-trip behind them and a visible rollback on failure.",
+            "A daily cron generates the month's fees and recurring expenses idempotently (partial unique indexes), then queues fee-due, overdue and birthday messages into each centre's outbox.",
+            "Migrations are plain SQL applied in order exactly once; the Drizzle schema mirrors them, and the integration tests build an in-memory Postgres from the SQL so drift between the two fails the test run."
+          ]
+        },
+        {
+          "heading": "What went wrong, and what I changed",
+          "bullets": [
+            "The billing cron had been blocked by the auth middleware since mid-August, and fee generation had been failing since early September on a Postgres error (42P10) because an ON CONFLICT clause did not repeat the partial index's predicate. Real centres had months of fees that were never generated. I reproduced the exact error against Postgres 17, fixed the predicate, made the cron route public but fail closed on a strong CRON_SECRET, and replaced db.transaction — which the neon-http driver does not support — with db.batch.",
+            "Twenty-one columns existed in production but in no migration. A reconciliation migration brought the history back in line, and the PGlite tests now catch the next drift before it deploys.",
+            "A teacher login received the whole tenant: every fee, payment and expense, the owner's GST number and UPI ID, in the same payload the owner gets. Hiding pages in the sidebar hid nothing. Reads are now scoped by role on the server — a teacher gets exactly the eight collections their screens use and a profile without money or tax identity — and the owner-only pages redirect.",
+            "Sign-up was five separate statements; a failure after the first left an orphan tenant and a person whose username was now 'already taken'. Ids are minted up front and everything is written in one batch, which Neon runs as one transaction.",
+            "Platform-console actions are now audited, sign-in and sign-up are rate-limited in Postgres, super-admin impersonation of a centre expires after four hours and records a reason, and the home page's 3 MB icon font became 50 KB."
+          ]
+        },
+        {
+          "heading": "Security, testing and delivery",
+          "bullets": [
+            "Owner-only guards on anything that moves money or reshapes the centre, including the UPI ID — a teacher who could change it would redirect every parent's payment.",
+            "Vitest: pure unit tests for the money and schedule arithmetic, plus integration tests on PGlite built from the real migrations. No database or network needed, so they can gate every deploy.",
+            "The Vercel build runs the tests, then the migrations (production only), then the build."
+          ]
+        },
+        {
+          "heading": "Results and what is next",
+          "body": [
+            "EduFlow is live with real centres. As with Halkhata, I am not publishing centre or student counts until I can show them.",
+            "Next: server-side aggregation per view (the single hydration call will not hold at a thousand students), a separate database for preview deployments, and a parent portal scoped per student."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "healthlocker",
+      "title": "HealthLocker",
+      "kicker": "A multi-tenant family health record platform",
+      "year": "2026",
+      "status": "Pilot · demo data only",
+      "statusTone": "pilot",
+      "summary": "One place for an Indian family's prescriptions, lab reports, medicines, vaccinations and medical expenses, with lightweight consoles for clinics, hospitals, diagnostic labs and pharmacies that write straight into the patient's record. Username sign-in and manual UPI payment verification, because cards and email are not universal.",
+      "accent": "#14B8A6",
+      "monogram": "+",
+      "links": {
+        "live": "https://health-locker-chi.vercel.app",
+        "repo": "https://github.com/sarkarsantanu2024/health-locker"
+      },
+      "tags": ["Next.js 16", "Prisma", "Neon Postgres", "Column encryption", "GitHub Actions CI", "Capacitor"],
+      "stack": "Next.js 16 (App Router, server-first) · React 19 · TypeScript strict · Tailwind 4 · Prisma 6 on Neon Postgres (49 models) · zod · jose JWT · argon2id · optional TOTP · Vitest · GitHub Actions · Capacitor 8 Android wrapper · Vercel (Mumbai)",
+      "sections": [
+        {
+          "heading": "The problem",
+          "body": [
+            "Family health records are scattered across paper files, phone photos and provider portals that do not talk to each other. Small providers cannot afford practice software. And the people this is for do not all have a card or an email address, so the product needed username-based accounts and a human verifying a UPI payment against a bank statement before anything is activated.",
+            "This is the most engineering-heavy of the three and also the one with no real patients yet. I present it as a pilot, and the story is authorization: designing tenancy in a health platform, finding where it was wrong, and proving the fix."
+          ]
+        },
+        {
+          "heading": "Architecture",
+          "bullets": [
+            "A server-first Next.js monolith: 34 of 229 source files are client components. Domain modules — identity, patient, provider, billing, notify, admin, documents — each with schema, service, actions and UI.",
+            "The tenant comes from the session, never from the client. Every provider query carries the caller's orgId in its WHERE clause, and a record in another tenant returns NOT FOUND rather than FORBIDDEN, so its existence is not disclosed.",
+            "JWT access cookies backed by a database session table, so a suspension or a revoked session takes effect on the next request, not when the token expires.",
+            "AES-GCM column encryption for health identifiers and bank details; a nonce-based Content Security Policy; uploads checked by magic bytes; audit metadata redacted before it is written.",
+            "Payment approval is idempotent and transactional, and bank references (UTR) are globally unique, so one payment cannot activate two accounts."
+          ]
+        },
+        {
+          "heading": "The authorization story",
+          "bullets": [
+            "First hole, found earlier: provider org admins legitimately hold user-management grants for their own reception staff, but the actions took the org id from the form. A clinic admin could create a user inside another tenant or reset the Super Admin's password. Fixed with an explicit actor scope — platform or tenant — resolved from the session, with a named regression test.",
+            "Second hole, found in the pre-publication audit: provider admins also held payment:verify and audit:read, and every platform screen treated a permission string as platform authority. A clinic admin could open /admin/payments and approve any tenant's payment, read the platform-wide audit trail, and list every user on the platform. Any signed-in patient could open the /admin dashboard and see revenue.",
+            "The fix separates the two kinds of authority. A short, explicit list names the cross-tenant grants; provider admins no longer hold them; and a new guard requires the platform ROLE as well as the grant, because user:read is legitimately both a tenant permission and a platform one. An /admin layout sends anyone else to their own portal, and the document route decides 'platform reviewer' by role, not by permission string.",
+            "The proof is a role-by-guard matrix: every role is pushed through every guard with the database and cookie layers stubbed, alongside a role-by-permission matrix over the whole platform-only list. The integration suites had called services directly and so never asked which role may reach the console; now something does."
+          ]
+        },
+        {
+          "heading": "Other fixes from the audit",
+          "bullets": [
+            "Medicine reminders look at a 30-minute window either side of now, but the free Vercel tier allows one cron a day — so almost no dose reminder ever fired. The real cadence now comes from a GitHub Actions schedule every 30 minutes, authenticated with the same secret.",
+            "The shared demo password was a literal in a public repository. It is now required from the environment, and the integration test setup refuses to run against anything but a local database, because those suites hard-delete rows by name fragment.",
+            "Next.js 16.2 carried several critical unauthenticated remote-code-execution advisories. Upgrading to 16.4 (with React 19.3 and Capacitor 8.6) cut the production dependency audit from 35 advisories to 7, all transitive build-time packages."
+          ]
+        },
+        {
+          "heading": "Testing and delivery",
+          "bullets": [
+            "CI on every push: frozen install, migrate and seed a throwaway Postgres 16, lint, typecheck, 250 unit tests, about 100 integration test blocks against the real schema, a production build, then an authenticated smoke render of every page for every role.",
+            "Login with lockout and timing-equalised failures, optional TOTP, session revocation. The emergency card exposes only what the patient opts into, behind a 128-bit revocable token, and every view is audited."
+          ]
+        },
+        {
+          "heading": "Results and what is next",
+          "body": [
+            "A pilot. It is deployed and exercised with demo data; there are no real patients or providers yet, and I will not claim otherwise.",
+            "Next: patient-confirmed provider linking (a provider can currently link any patient by id), AI-assisted report structuring and OCR (planned, not built), error boundaries and monitoring, and field Core Web Vitals."
+          ]
+        }
+      ]
+    }
+  ]
+}
