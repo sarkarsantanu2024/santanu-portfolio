@@ -9,7 +9,7 @@
       "title": "Halkhata",
       "kicker": "QR ordering and a credit ledger for local shops",
       "year": "2026",
-      "status": "Live · in use by real shops",
+      "status": "Live · first real shop onboarded",
       "statusTone": "live",
       "summary": "A multi-tenant PWA for Indian kirana, sweet and street-food shops. Customers order by scanning a QR code with no app and no account; owners run orders, a counter till with UPI QR and an udhaar (credit) book in English, Bengali or Hindi.",
       "accent": "#FFC93C",
@@ -73,7 +73,7 @@
         {
           "heading": "Results and what is next",
           "body": [
-            "Halkhata is live and in use by real shops. I am not publishing shop or order counts until I can show them; they are available on request.",
+            "Halkhata is live, with its first real shop onboarded and taking orders; the rest of the shops on the platform are demo and QA tenants. I am not publishing order counts until there is enough to mean something; they are available on request.",
             "Next: a Neon dev branch so local work never touches production, a baseline for the Prisma migration history, object storage for photos, and an evaluation set for the photo AI."
           ]
         }
