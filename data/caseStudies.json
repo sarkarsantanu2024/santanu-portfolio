@@ -14,6 +14,8 @@
       "summary": "A multi-tenant PWA for Indian kirana, sweet and street-food shops. Customers order by scanning a QR code with no app and no account; owners run orders, a counter till with UPI QR and an udhaar (credit) book in English, Bengali or Hindi.",
       "accent": "#FFC93C",
       "monogram": "হ",
+      "image": "/images/case-studies/halkhata.jpg",
+      "imageAlt": "A kirana shop owner pointing at the Halkhata scan-to-order poster on his counter",
       "links": {
         "live": "https://halkhata.nexvoratechnologies.co.in",
         "repo": "https://github.com/sarkarsantanu2024/dukaanflow"
@@ -87,6 +89,8 @@
       "summary": "A multi-tenant SaaS for abacus, tuition, dance, music and other training centres, and for franchise head offices. Students, monthly fees with a pre-filled UPI QR, expenses, attendance, tests, certificates and one-tap WhatsApp reminders — with no payment gateway and no WhatsApp API.",
       "accent": "#7C3AED",
       "monogram": "E",
+      "image": "/images/case-studies/eduflow.jpg",
+      "imageAlt": "The EduFlow sign-in screen: the all-in-one software to run your coaching centre",
       "links": {
         "live": "https://eduflow.nexvoratechnologies.co.in",
         "repo": "https://github.com/sarkarsantanu2024/eduflow"
@@ -148,6 +152,8 @@
       "summary": "One place for an Indian family's prescriptions, lab reports, medicines, vaccinations and medical expenses, with lightweight consoles for clinics, hospitals, diagnostic labs and pharmacies that write straight into the patient's record. Username sign-in and manual UPI payment verification, because cards and email are not universal.",
       "accent": "#14B8A6",
       "monogram": "+",
+      "image": "/images/case-studies/healthlocker.jpg",
+      "imageAlt": "The HealthLocker home page: your family's health records in one place",
       "links": {
         "live": "https://health-locker-chi.vercel.app",
         "repo": "https://github.com/sarkarsantanu2024/health-locker"

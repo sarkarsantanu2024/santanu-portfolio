@@ -13,7 +13,7 @@ export default function CaseStudies({ caseStudies }) {
       id="case-studies"
       className="py-28 md:py-32 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading label={caseStudies.sectionLabel} title={caseStudies.title} />
         </div>
@@ -30,18 +30,30 @@ export default function CaseStudies({ caseStudies }) {
             >
               <Link href={`/case-studies/${study.slug}`} className="block flex-1 flex flex-col">
                 <div
-                  className="relative aspect-[16/9] overflow-hidden flex items-center justify-center"
-                  style={{
-                    background: `radial-gradient(circle at 30% 20%, ${study.accent}55, transparent 60%), linear-gradient(135deg, #0E0E12, #232329)`,
-                  }}
+                  className="relative aspect-[16/9] overflow-hidden flex items-center justify-center bg-paper-line dark:bg-ink"
+                  style={
+                    study.image
+                      ? undefined
+                      : { background: `radial-gradient(circle at 30% 20%, ${study.accent}55, transparent 60%), linear-gradient(135deg, #0E0E12, #232329)` }
+                  }
                 >
-                  <span
-                    className="font-display font-bold text-white/90 transition-transform duration-700 group-hover:scale-110"
-                    style={{ fontSize: "clamp(3.5rem, 8vw, 5.5rem)", lineHeight: 1 }}
-                    aria-hidden
-                  >
-                    {study.monogram}
-                  </span>
+                  {study.image ? (
+                    <img
+                      src={study.image}
+                      alt={study.imageAlt || `${study.title} cover`}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span
+                      className="font-display font-bold text-white/90 transition-transform duration-700 group-hover:scale-110"
+                      style={{ fontSize: "clamp(3.5rem, 8vw, 5.5rem)", lineHeight: 1 }}
+                      aria-hidden
+                    >
+                      {study.monogram}
+                    </span>
+                  )}
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(14,14,18,0.35) 0%, transparent 45%)" }} />
                   <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur text-white text-[11px] font-bold uppercase tracking-[0.15em]">
                     <span className={`w-1.5 h-1.5 rounded-full ${TONE[study.statusTone] ?? "bg-white"}`} />
                     {study.status}

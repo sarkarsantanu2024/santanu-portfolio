@@ -76,7 +76,7 @@ export default function Experience({ experience }) {
       ref={ref}
       className="py-20 md:py-28 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 relative">
         <div className="exp-hdr flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             label={experience.sectionLabel}

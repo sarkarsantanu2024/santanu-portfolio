@@ -20,7 +20,7 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-40 nav-scrolled">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-10">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-4 lg:px-10">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-full bg-amber-brand text-ink flex items-center justify-center font-display font-bold text-base">
               SS
@@ -44,7 +44,7 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
       </header>
 
       <main className="bg-paper dark:bg-ink bg-dotted min-h-screen pt-28 pb-24">
-        <article className="max-w-7xl mx-auto px-5 lg:px-10">
+        <article className="max-w-[1440px] mx-auto px-5 lg:px-10">
           {/* Title block */}
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 xl:gap-16 items-end">
             <div>
@@ -77,14 +77,17 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
                     </a>
                   </dd>
                 </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-[0.2em] text-ink/50 dark:text-slate-500 mb-1">Source</dt>
-                  <dd>
-                    <a href={study.links.repo} target="_blank" rel="noopener" className="font-medium text-amber-brand hover:underline break-all">
-                      {study.links.repo.replace("https://", "")}
-                    </a>
-                  </dd>
-                </div>
+                {/* Optional: delete `links.repo` from caseStudies.json to hide the source link. */}
+                {study.links.repo && (
+                  <div>
+                    <dt className="text-xs uppercase tracking-[0.2em] text-ink/50 dark:text-slate-500 mb-1">Source</dt>
+                    <dd>
+                      <a href={study.links.repo} target="_blank" rel="noopener" className="font-medium text-amber-brand hover:underline break-all">
+                        {study.links.repo.replace("https://", "")}
+                      </a>
+                    </dd>
+                  </div>
+                )}
                 <div>
                   <dt className="text-xs uppercase tracking-[0.2em] text-ink/50 dark:text-slate-500 mb-1">Stack</dt>
                   <dd className="text-ink/80 dark:text-slate-300 leading-relaxed">{study.stack}</dd>
@@ -92,6 +95,17 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
               </dl>
             </aside>
           </div>
+
+          {study.image && (
+            <figure className="mt-12 rounded-3xl overflow-hidden border border-ink/5 dark:border-white/5 bg-paper-line dark:bg-ink-card">
+              <img
+                src={study.image}
+                alt={study.imageAlt || `${study.title} cover`}
+                className="w-full h-auto object-cover"
+                loading="eager"
+              />
+            </figure>
+          )}
 
           {/* Role */}
           <div className="mt-14 rounded-3xl border border-amber-brand/40 bg-amber-brand/10 dark:bg-amber-brand/5 p-7 md:p-8">
@@ -172,7 +186,7 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
       </main>
 
       <footer className="py-8 border-t border-ink/10 dark:border-white/10 bg-paper dark:bg-ink">
-        <div className="max-w-7xl mx-auto px-5 lg:px-10 flex flex-wrap items-center justify-between gap-4 text-sm text-ink/60 dark:text-slate-400">
+        <div className="max-w-[1440px] mx-auto px-5 lg:px-10 flex flex-wrap items-center justify-between gap-4 text-sm text-ink/60 dark:text-slate-400">
           <span>{footer.copyright}</span>
           <div className="flex gap-6">
             {footer.links.map((link) => (

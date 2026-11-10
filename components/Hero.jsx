@@ -56,7 +56,7 @@ export default function Hero({ hero }) {
       ref={sectionRef}
       className="relative min-h-screen flex flex-col justify-between pt-28 md:pt-32 pb-10 overflow-hidden bg-paper dark:bg-ink"
     >
-      <div className="max-w-7xl mx-auto px-5 lg:px-10 w-full flex-1 flex flex-col justify-center">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 w-full flex-1 flex flex-col justify-center">
         <p className="hero-eyebrow inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-amber-brand mb-8">
           <span className="w-6 h-px bg-amber-brand" />
           {hero.eyebrow}
@@ -110,7 +110,7 @@ export default function Hero({ hero }) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-5 lg:px-10 w-full mt-16">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 w-full mt-16">
         <div className="grid sm:grid-cols-3 gap-4">
           {services.map((s, i) => (
             <div

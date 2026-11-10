@@ -51,7 +51,7 @@ export default function Skills({ skills }) {
       ref={ref}
       className="py-28 md:py-32 bg-paper-soft dark:bg-ink-deep border-t border-ink/5 dark:border-white/5 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-5 lg:px-10">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10">
         <div className="skills-hdr">
           <SectionHeading label={skills.sectionLabel} title={skills.title} />
         </div>

@@ -108,7 +108,7 @@ export default function Navbar({ nav }) {
           scrolled ? "nav-scrolled" : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5 lg:px-10">
+        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-5 lg:px-10">
           <a href="#hero" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-full bg-amber-brand text-ink flex items-center justify-center font-display font-bold text-base">
               {nav.logo}

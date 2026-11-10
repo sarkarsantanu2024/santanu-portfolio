@@ -45,7 +45,7 @@ export default function Contact({ contact }) {
       ref={ref}
       className="py-20 md:py-28 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5"
     >
-      <div className="max-w-7xl mx-auto px-5 lg:px-10 contact-inner">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 contact-inner">
         <SectionHeading label={contact.sectionLabel} title={contact.title} />
 
         <div className="grid lg:grid-cols-[1fr_auto] gap-10 lg:gap-14 items-end mt-4">

@@ -64,7 +64,7 @@ export default function Projects({ projects }) {
         style={{ background: "#FFC93C" }}
       />
 
-      <div className="max-w-7xl mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 relative">
         <div className="proj-hdr flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             label={projects.sectionLabel}
