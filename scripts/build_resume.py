@@ -32,7 +32,6 @@ ROOT = Path(__file__).resolve().parent.parent
 INK = HexColor("#111827")
 BODY = HexColor("#374151")
 MUTED = HexColor("#6B7280")
-RULE = HexColor("#CBD5E1")
 ACCENT = HexColor("#0B5394")
 ACCENT_HEX = "#0B5394"
 
@@ -42,15 +41,21 @@ WIDTH = A4[0] - 2 * MARGIN_X - 12  # the frame pads 6pt each side
 MONTHS = {m: i + 1 for i, m in enumerate(
     "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split())}
 
+FLUSH = TableStyle([
+    ("VALIGN", (0, 0), (-1, -1), "TOP"),
+    ("LEFTPADDING", (0, 0), (-1, -1), 0),
+    ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+    ("TOPPADDING", (0, 0), (-1, -1), 0),
+    ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+])
+
 
 def load(name):
     return json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
 
 
 def esc(text):
-    """Escape for ReportLab markup; the built-in fonts have no arrow glyph."""
-    text = str(text).replace("→", "to")
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def link(href, label=None):
@@ -71,19 +76,19 @@ def career_years(roles, today=None):
 
 
 def style(name, **kw):
-    base = dict(fontName="Helvetica", fontSize=9.4, leading=13, textColor=BODY)
+    base = dict(fontName="Helvetica", fontSize=9.3, leading=12.6, textColor=BODY)
     base.update(kw)
     return ParagraphStyle(name, **base)
 
 
 S = {
-    "name": style("name", fontName="Helvetica-Bold", fontSize=23, leading=27, textColor=INK),
-    "headline": style("headline", fontName="Helvetica-Bold", fontSize=11, leading=15, textColor=ACCENT),
-    "contact": style("contact", fontSize=9, leading=13, textColor=BODY),
-    "section": style("section", fontName="Helvetica-Bold", fontSize=9.6, leading=12, textColor=ACCENT),
+    "name": style("name", fontName="Helvetica-Bold", fontSize=24, leading=28, textColor=INK),
+    "headline": style("headline", fontName="Helvetica-Bold", fontSize=10.5, leading=15, textColor=ACCENT),
+    "contact": style("contact", fontSize=8.8, leading=12.4, alignment=TA_RIGHT),
+    "section": style("section", fontName="Helvetica-Bold", fontSize=9.6, leading=12, textColor=ACCENT, keepWithNext=1),
     "body": style("body"),
     "role": style("role", fontName="Helvetica-Bold", fontSize=10.2, leading=13.5, textColor=INK),
-    "sub": style("sub", fontSize=9.2, leading=12.5, textColor=MUTED),
+    "sub": style("sub", fontSize=9.2, leading=12.5, textColor=MUTED, keepWithNext=1),
     "right": style("right", fontSize=9, leading=13.5, textColor=MUTED, alignment=TA_RIGHT),
     "bullet": style("bullet", leftIndent=10, bulletIndent=1, spaceBefore=1.5),
     "label": style("label", fontName="Helvetica-Bold", fontSize=9.2, textColor=INK),
@@ -91,25 +96,18 @@ S = {
 
 
 def section(title):
-    return [
-        Spacer(1, 9),
-        Paragraph(esc(title.upper()), S["section"]),
-        HRFlowable(width="100%", thickness=0.8, color=ACCENT, spaceBefore=2, spaceAfter=5),
-    ]
+    rule = HRFlowable(width="100%", thickness=0.8, color=ACCENT, spaceBefore=2, spaceAfter=5)
+    rule.keepWithNext = True
+    return [Spacer(1, 8), Paragraph(esc(title.upper()), S["section"]), rule]
 
 
 def split_row(left, right, right_width=46 * mm):
+    """Bold heading on the left, muted date/status on the right. Stays with what follows."""
     table = Table(
         [[Paragraph(left, S["role"]), Paragraph(esc(right), S["right"])]],
-        colWidths=[WIDTH - right_width, right_width], hAlign="LEFT",
+        colWidths=[WIDTH - right_width, right_width], hAlign="LEFT", style=FLUSH,
     )
-    table.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-        ("TOPPADDING", (0, 0), (-1, -1), 0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-    ]))
+    table.keepWithNext = True
     return table
 
 
@@ -122,8 +120,8 @@ def footer(name):
         canvas.saveState()
         canvas.setFont("Helvetica", 7.5)
         canvas.setFillColor(MUTED)
-        canvas.drawString(MARGIN_X, 9 * mm, f"{name} · Curriculum Vitae")
-        canvas.drawRightString(A4[0] - MARGIN_X, 9 * mm, f"Page {doc.page}")
+        canvas.drawString(MARGIN_X + 6, 9 * mm, f"{name} · Curriculum Vitae")
+        canvas.drawRightString(A4[0] - MARGIN_X - 6, 9 * mm, f"Page {doc.page}")
         canvas.restoreState()
     return draw
 
@@ -140,19 +138,22 @@ def build():
     socials = {s["label"]: s["href"] for s in site.get("socials", [])}
     linkedin = socials.get("LinkedIn") or site["contact"]["secondaryCta"]["href"]
 
-    story = [
-        Paragraph(esc(name), S["name"]),
-        Paragraph(esc(cv["headline"]), S["headline"]),
-        Spacer(1, 3),
+    # Header: name and title on the left, contact details on the right.
+    details = [
+        esc(contact["location_on"]["value"]),
+        link(contact["phone"]["href"], contact["phone"]["value"]),
+        link(contact["email"]["href"], contact["email"]["value"]),
+        link(linkedin),
     ]
-    line = [esc(contact["location_on"]["value"]),
-            link(contact["phone"]["href"], contact["phone"]["value"]),
-            link(contact["email"]["href"], contact["email"]["value"])]
-    story.append(Paragraph("  |  ".join(line), S["contact"]))
-    web = [link(linkedin)]
     if socials.get("Portfolio"):
-        web.append(link(socials["Portfolio"]))
-    story.append(Paragraph("  |  ".join(web), S["contact"]))
+        details.append(link(socials["Portfolio"]))
+    header = Table(
+        [[[Paragraph(esc(name), S["name"]), Paragraph(esc(cv["headline"]), S["headline"])],
+          Paragraph("<br/>".join(details), S["contact"])]],
+        colWidths=[WIDTH - 74 * mm, 74 * mm], hAlign="LEFT", style=FLUSH,
+    )
+    header.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "BOTTOM")]))
+    story = [header, HRFlowable(width="100%", thickness=1.6, color=INK, spaceBefore=7, spaceAfter=0)]
 
     story += section("Professional Summary")
     story.append(Paragraph(esc(cv["summary"].replace("{years}", str(years))), S["body"]))
@@ -162,51 +163,39 @@ def build():
         [Paragraph(esc(g["heading"]), S["label"]), Paragraph(esc(", ".join(g["items"])), S["body"])]
         for g in site["skills"]["groups"] + cv.get("extraSkills", [])
     ]
-    skills = Table(rows, colWidths=[48 * mm, WIDTH - 48 * mm], hAlign="LEFT")
-    skills.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-        ("TOPPADDING", (0, 0), (-1, -1), 1.5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 1.5),
-    ]))
+    skills = Table(rows, colWidths=[45 * mm, WIDTH - 45 * mm], hAlign="LEFT", style=FLUSH)
+    skills.setStyle(TableStyle([("BOTTOMPADDING", (0, 0), (-1, -1), 2)]))
     story.append(skills)
 
-    def role_block(role):
+    story += section("Professional Experience")
+    for role in roles:
+        title, company = role["title"], role["company"]
+        if "→" in title:  # "Frontend Developer → Frontend Architect": lead with the current title
+            first, title = (t.strip() for t in title.split("→", 1))
+            company += f" · joined as {first}"
         extra = next((v for k, v in cv.get("extraBullets", {}).items()
                       if role["company"].startswith(k)), [])
-        return KeepTogether([
-            split_row(esc(role["title"]), role["period"]),
-            Paragraph(esc(role["company"]), S["sub"]),
+        story += [
+            split_row(esc(title), role["period"]),
+            Paragraph(esc(company), S["sub"]),
             *bullets(role["bullets"] + extra),
-            Spacer(1, 7),
-        ])
-
-    story += section("Professional Experience")
-    story.append(role_block(roles[0]))
+            Spacer(1, 5),
+        ]
 
     products = cv["products"]
-    story.append(KeepTogether([
-        split_row(esc(products["heading"]), products["period"]),
-        Paragraph(esc(products["company"]), S["sub"]),
-        Spacer(1, 2),
-        Paragraph(esc(cases["roleStatement"]), S["body"]),
-        Spacer(1, 5),
-    ]))
+    story += section(products["heading"])
+    story += [Paragraph(esc(products["intro"]), S["body"]), Spacer(1, 6)]
     for item in cases["items"]:
         head = f'{esc(item["title"])} <font name="Helvetica" color="#374151">– {esc(item["kicker"])}</font>'
         meta = [link(item["links"]["live"])] if item.get("links", {}).get("live") else []
         meta.append(esc(", ".join(item["tags"])))
         points = products["bullets"].get(item["slug"]) or [item["summary"]]
-        story.append(KeepTogether([
+        story += [
             split_row(head, item["status"], right_width=50 * mm),
             Paragraph("  |  ".join(meta), S["sub"]),
             *bullets(points),
             Spacer(1, 6),
-        ]))
-
-    for role in roles[1:] + cv.get("earlierRoles", []):
-        story.append(role_block(role))
+        ]
 
     story += section("Selected Client Projects")
     for p in site["projects"]["items"] + cv.get("moreProjects", []):
@@ -235,7 +224,7 @@ def build():
     out.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(
         str(out), pagesize=A4,
-        leftMargin=MARGIN_X, rightMargin=MARGIN_X, topMargin=14 * mm, bottomMargin=16 * mm,
+        leftMargin=MARGIN_X, rightMargin=MARGIN_X, topMargin=12 * mm, bottomMargin=16 * mm,
         title=f"{name} – CV", author=name, subject=cv["headline"],
         keywords="Frontend Architect, Senior Frontend Engineer, React, Next.js, Vue, TypeScript, Headless Drupal",
     )

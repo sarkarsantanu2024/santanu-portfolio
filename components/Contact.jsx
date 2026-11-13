@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { careerYears } from "../lib/career.js";
 import SectionHeading from "./ui/SectionHeading.jsx";
 
 export default function Contact({ contact }) {
@@ -68,7 +69,8 @@ export default function Contact({ contact }) {
           <div className="contact-stats flex gap-10 lg:gap-12 pb-3">
             <div className="contact-stat">
               <div className="font-display font-bold text-4xl md:text-5xl text-amber-brand leading-none">
-                10<span className="text-ink dark:text-white">+</span>
+                {careerYears()}
+                <span className="text-ink dark:text-white">+</span>
               </div>
               <div className="text-xs uppercase tracking-[0.15em] text-ink/60 dark:text-slate-400 mt-2">
                 Years of
