@@ -61,10 +61,10 @@ export default function Projects({ projects }) {
     >
       <div
         className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full blur-[140px] opacity-[0.08] pointer-events-none"
-        style={{ background: "#FFC93C" }}
+        style={{ background: "#38BDF8" }}
       />
 
-      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-[1600px] mx-auto px-5 lg:px-12 relative">
         <div className="proj-hdr flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             label={projects.sectionLabel}

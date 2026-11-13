@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import SectionHeading from "./ui/SectionHeading.jsx";
+import { careerYears } from "../lib/career.js";
 
 export default function Experience({ experience }) {
   const ref = useRef(null);
@@ -76,7 +77,7 @@ export default function Experience({ experience }) {
       ref={ref}
       className="py-20 md:py-28 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5 relative overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-[1600px] mx-auto px-5 lg:px-12 relative">
         <div className="exp-hdr flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             label={experience.sectionLabel}
@@ -84,7 +85,8 @@ export default function Experience({ experience }) {
           />
           <div className="mb-12 flex items-center gap-4">
             <div className="font-display font-bold text-4xl md:text-5xl text-amber-brand leading-none">
-              13<span className="text-ink dark:text-white">+</span>
+              {careerYears()}
+              <span className="text-ink dark:text-white">+</span>
             </div>
             <div className="text-xs uppercase tracking-[0.2em] text-ink/60 dark:text-slate-400 max-w-[130px] leading-tight">
               Years across
@@ -104,7 +106,7 @@ export default function Experience({ experience }) {
             className="tl-progress absolute top-0 bottom-0 left-[21px] md:left-[245px] w-[2px]"
             style={{
               background:
-                "linear-gradient(to bottom, #FFC93C 0%, #FFC93C 70%, rgba(255,201,60,0.2) 100%)",
+                "linear-gradient(to bottom, #38BDF8 0%, #38BDF8 70%, rgba(56,189,248,0.2) 100%)",
             }}
           />
 
@@ -144,7 +146,7 @@ export default function Experience({ experience }) {
                           }`}
                           style={
                             job.current
-                              ? { boxShadow: "0 0 0 6px rgba(255,201,60,0.15)" }
+                              ? { boxShadow: "0 0 0 6px rgba(56,189,248,0.15)" }
                               : undefined
                           }
                         >

@@ -13,7 +13,7 @@ export default function CaseStudies({ caseStudies }) {
       id="case-studies"
       className="py-28 md:py-32 bg-paper dark:bg-ink border-t border-ink/5 dark:border-white/5 relative overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto px-5 lg:px-10 relative">
+      <div className="max-w-[1600px] mx-auto px-5 lg:px-12 relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading label={caseStudies.sectionLabel} title={caseStudies.title} />
         </div>
@@ -22,26 +22,33 @@ export default function CaseStudies({ caseStudies }) {
           {caseStudies.intro}
         </p>
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {caseStudies.items.map((study, i) => (
+        {/* Live products get the two large cards; anything else (pilots) sits
+            below as a compact full-width row. Driven by `statusTone` in the data. */}
+        <div className="grid md:grid-cols-2 gap-5">
+          {caseStudies.items.map((study, i) => {
+            const compact = study.statusTone !== "live";
+            return (
             <article
               key={study.slug}
-              className="group rounded-3xl overflow-hidden bg-paper-soft dark:bg-ink-card border border-ink/5 dark:border-transparent hover:bg-paper-line dark:hover:bg-ink-raised transition-colors flex flex-col"
+              className={`group rounded-3xl overflow-hidden bg-paper-soft dark:bg-ink-card border border-ink/5 dark:border-transparent hover:bg-paper-line dark:hover:bg-ink-raised transition-colors flex flex-col ${compact ? "md:col-span-2" : ""}`}
             >
-              <Link href={`/case-studies/${study.slug}`} className="block flex-1 flex flex-col">
+              <Link
+                href={`/case-studies/${study.slug}`}
+                className={`flex-1 flex flex-col ${compact ? "md:flex-row" : ""}`}
+              >
                 <div
-                  className="relative aspect-[16/9] overflow-hidden flex items-center justify-center bg-paper-line dark:bg-ink"
+                  className={`relative aspect-[16/9] overflow-hidden flex items-center justify-center bg-paper-line dark:bg-ink ${compact ? "md:aspect-auto md:w-1/3 md:shrink-0 md:min-h-[240px]" : ""}`}
                   style={
                     study.image
                       ? undefined
-                      : { background: `radial-gradient(circle at 30% 20%, ${study.accent}55, transparent 60%), linear-gradient(135deg, #0E0E12, #232329)` }
+                      : { background: `radial-gradient(circle at 30% 20%, ${study.accent}55, transparent 60%), linear-gradient(135deg, #172033, #283650)` }
                   }
                 >
                   {study.image ? (
                     <img
                       src={study.image}
                       alt={study.imageAlt || `${study.title} cover`}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                      className={`w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04] ${compact ? "md:absolute md:inset-0" : ""}`}
                       loading="lazy"
                     />
                   ) : (
@@ -53,7 +60,7 @@ export default function CaseStudies({ caseStudies }) {
                       {study.monogram}
                     </span>
                   )}
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(14,14,18,0.35) 0%, transparent 45%)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg, rgba(23,32,51,0.35) 0%, transparent 45%)" }} />
                   <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur text-white text-[11px] font-bold uppercase tracking-[0.15em]">
                     <span className={`w-1.5 h-1.5 rounded-full ${TONE[study.statusTone] ?? "bg-white"}`} />
                     {study.status}
@@ -93,7 +100,8 @@ export default function CaseStudies({ caseStudies }) {
                 </div>
               </Link>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

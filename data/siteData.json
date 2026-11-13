@@ -21,7 +21,7 @@
     { "label": "WhatsApp", "href": "https://wa.me/919804243159", "icon": "whatsapp" }
   ],
   "hero": {
-    "eyebrow": "Frontend Architect · Kolkata, India",
+    "eyebrow": "Frontend Architect · Senior Frontend Engineer · Kolkata, India",
     "heading": "Hi, I'm Santanu.",
     "subheading": "I design and build considered interfaces for the web.",
     "description": "For the last decade I've been shaping frontends at Webspiders — from pixel-perfect theming to large React, Vue and Next.js systems on headless Drupal. I care about typography, performance, and code that ages well.",
@@ -38,7 +38,7 @@
   },
   "about": {
     "sectionLabel": "01 — About",
-    "title": "A frontend practice, ten years in.",
+    "title": "A frontend practice, since 2012.",
     "description": [
       "I'm a frontend architect based in Kolkata. For the past decade I've led frontend at Webspiders Pvt. Ltd, shipping enterprise web platforms for clients in India, Singapore and beyond.",
       "My day-to-day spans the full frontend stack — modular React and Vue 3 component systems, Next.js App Router patterns (SSR, ISR, dynamic routing), and headless Drupal integrations over REST / JSON:API.",

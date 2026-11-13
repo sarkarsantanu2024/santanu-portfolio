@@ -1,11 +1,14 @@
 import "./globals.css";
+import { careerYears } from "../lib/career.js";
+
+const YEARS = `${careerYears()}+`;
 
 export const metadata = {
-  title: "Santanu Sarkar | Frontend Architect – React, Vue & Headless Drupal",
-  description:
-    "Santanu Sarkar is an AI-aided Frontend Architect with 10+ years of experience building enterprise web applications using React, Vue, Next.js, and headless Drupal CMS. Based in Kolkata, India.",
+  title:
+    "Santanu Sarkar | Frontend Architect & Senior Frontend Engineer – React, Next.js, Vue",
+  description: `Santanu Sarkar is an AI-aided Frontend Architect and Senior Frontend Engineer with ${YEARS} years of experience building enterprise web applications using React, Vue, Next.js, and headless Drupal CMS. Based in Kolkata, India.`,
   keywords:
-    "Frontend Architect, React Developer, Vue Developer, Next.js, Drupal Headless CMS, Tailwind CSS, GSAP, Frontend Developer Kolkata, AI-aided development, Santanu Sarkar",
+    "Frontend Architect, Senior Frontend Engineer, Senior React Developer, React Developer, Vue Developer, Next.js, Drupal Headless CMS, Tailwind CSS, GSAP, Frontend Developer Kolkata, AI-aided development, Santanu Sarkar",
   authors: [{ name: "Santanu Sarkar" }],
   robots: "index, follow",
   icons: {
@@ -13,9 +16,8 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Santanu Sarkar | Frontend Architect",
-    description:
-      "AI-Aided Frontend Architect with 10+ years experience in React, Vue, Next.js, and headless CMS architectures.",
+    title: "Santanu Sarkar | Frontend Architect & Senior Frontend Engineer",
+    description: `AI-Aided Frontend Architect and Senior Frontend Engineer with ${YEARS} years experience in React, Vue, Next.js, and headless CMS architectures.`,
     url: "https://santanusarkar.dev",
   },
   twitter: {

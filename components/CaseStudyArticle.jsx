@@ -20,7 +20,7 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-40 nav-scrolled">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-4 lg:px-10">
+        <div className="flex w-full items-center justify-between gap-4 px-5 py-4 lg:px-12">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-full bg-amber-brand text-ink flex items-center justify-center font-display font-bold text-base">
               SS
@@ -44,7 +44,7 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
       </header>
 
       <main className="bg-paper dark:bg-ink bg-dotted min-h-screen pt-28 pb-24">
-        <article className="max-w-[1440px] mx-auto px-5 lg:px-10">
+        <article className="max-w-[1600px] mx-auto px-5 lg:px-12">
           {/* Title block */}
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 xl:gap-16 items-end">
             <div>
@@ -186,7 +186,7 @@ export default function CaseStudyArticle({ study, roleStatement, all, footer }) 
       </main>
 
       <footer className="py-8 border-t border-ink/10 dark:border-white/10 bg-paper dark:bg-ink">
-        <div className="max-w-[1440px] mx-auto px-5 lg:px-10 flex flex-wrap items-center justify-between gap-4 text-sm text-ink/60 dark:text-slate-400">
+        <div className="max-w-[1600px] mx-auto px-5 lg:px-12 flex flex-wrap items-center justify-between gap-4 text-sm text-ink/60 dark:text-slate-400">
           <span>{footer.copyright}</span>
           <div className="flex gap-6">
             {footer.links.map((link) => (

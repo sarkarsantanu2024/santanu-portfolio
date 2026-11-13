@@ -19,15 +19,15 @@ body {
 
 /* ── Scrollbar ────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #E8E5DC; }
-::-webkit-scrollbar-thumb { background: #B8B5A8; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #FFC93C; }
-.dark ::-webkit-scrollbar-track { background: #08080B; }
-.dark ::-webkit-scrollbar-thumb { background: #2D2D34; }
-.dark ::-webkit-scrollbar-thumb:hover { background: #FFC93C; }
+::-webkit-scrollbar-track { background: #E2E8F0; }
+::-webkit-scrollbar-thumb { background: #94A3B8; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
+.dark ::-webkit-scrollbar-track { background: #111827; }
+.dark ::-webkit-scrollbar-thumb { background: #344362; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #38BDF8; }
 
 /* ── Selection ────────────────────────────── */
-::selection { background: #FFC93C; color: #0E0E12; }
+::selection { background: #38BDF8; color: #172033; }
 
 /* ── Dotted grid pattern (victoreke-inspired texture) ─ */
 .bg-dotted {
@@ -58,7 +58,7 @@ body {
   inset: -10% -10% auto auto;
   width: 520px;
   height: 520px;
-  background: radial-gradient(closest-side, rgba(255, 201, 60, 0.18), transparent 70%);
+  background: radial-gradient(closest-side, rgba(56, 189, 248, 0.18), transparent 70%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 0;
@@ -66,7 +66,7 @@ body {
 
 /* ── Focus ────────────────────────────────── */
 a:focus-visible, button:focus-visible {
-  outline: 2px solid #FFC93C;
+  outline: 2px solid #38BDF8;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -93,7 +93,7 @@ a:focus-visible, button:focus-visible {
   position: absolute;
   inset: auto 0 0 0;
   height: 55%;
-  background: #FFC93C;
+  background: #38BDF8;
   border-radius: 14px 14px 0 0;
   z-index: 0;
 }
@@ -110,7 +110,7 @@ a:focus-visible, button:focus-visible {
 #backToTop {
   position: fixed; bottom: 2rem; right: 2rem;
   width: 44px; height: 44px;
-  background: #FFC93C; color: #2D2E41;
+  background: #38BDF8; color: #2D2E41;
   border: none; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; opacity: 0; pointer-events: none;
@@ -126,15 +126,15 @@ a:focus-visible, button:focus-visible {
 .material-icons.lg { font-size: 26px; }
 
 /* ── Nav active link (IntersectionObserver) */
-.nav-link.nav-active { color: #FFC93C; }
+.nav-link.nav-active { color: #38BDF8; }
 
 /* ── Nav scroll ──────────────────────────── */
 .nav-scrolled {
-  background: rgba(250, 248, 242, 0.85);
+  background: rgba(245, 248, 252, 0.85);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(14, 14, 18, 0.08);
+  border-bottom: 1px solid rgba(23, 32, 51, 0.08);
 }
 .dark .nav-scrolled {
-  background: rgba(8, 8, 11, 0.85);
+  background: rgba(17, 24, 39, 0.88);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
