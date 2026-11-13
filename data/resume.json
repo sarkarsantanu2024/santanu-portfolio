@@ -1,0 +1,73 @@
+{
+  "_note": "CV-only content. Everything else in the PDF (contact, skills, roles, projects, case studies) is read from siteData.json and caseStudies.json. Rebuild with: npm run resume",
+  "headline": "Frontend Architect · Senior Frontend Engineer",
+  "summary": "Frontend Architect with {years}+ years of experience delivering enterprise web platforms for clients in India and Singapore. Specialises in React, Next.js (App Router) and Vue 3 component systems on headless Drupal, with a focus on performance, accessibility and maintainable architecture. Also designs, builds and operates three multi-tenant SaaS products end to end, covering data model, authentication, testing, deployment and production incidents, using AI coding assistants inside a reviewed engineering workflow.",
+  "extraSkills": [
+    {
+      "heading": "Full-stack (own products)",
+      "items": ["Server Actions / route handlers", "Prisma", "Drizzle ORM", "Neon Postgres", "Auth.js", "Vitest", "GitHub Actions", "Vercel"]
+    },
+    {
+      "heading": "AI & Tooling",
+      "items": ["Claude Code", "GitHub Copilot", "Cursor", "Git / GitHub / Bitbucket", "Chrome DevTools", "Lighthouse"]
+    }
+  ],
+  "extraBullets": {
+    "Webspiders": [
+      "Implemented SEO foundations: semantic HTML, structured metadata, Open Graph and server-side rendering.",
+      "Worked with UX designers, backend engineers and product managers through UAT and production releases."
+    ]
+  },
+  "products": {
+    "heading": "Founder & Product Engineer",
+    "company": "Nexvora Technologies · Kolkata",
+    "period": "2026 – Present",
+    "bullets": {
+      "halkhata": [
+        "Server-authoritative money in integer paise, idempotent orders under a unique key, and race-safe stock decrements inside the sale transaction.",
+        "Stateless HMAC-signed sessions verified at the Edge and re-verified against the database before any write; credential versioning revokes every device on a PIN reset.",
+        "Wrote up a production data-loss incident and added a database-target guard that refuses production unless explicitly overridden."
+      ],
+      "eduflow": [
+        "Four-role multi-tenant SaaS with tenant isolation enforced on every read and write and data scoped by role on the server.",
+        "Diagnosed and fixed a failing billing cron (Postgres 42P10 on a partial-index ON CONFLICT) that had stopped monthly fee generation for live centres.",
+        "Integration tests run on in-memory Postgres (PGlite) built from the real SQL migrations and gate every deploy."
+      ],
+      "healthlocker": [
+        "Server-first Next.js monolith on 49 Prisma models; tenant derived from the session, AES-GCM column encryption and a nonce-based CSP.",
+        "Found and closed two cross-tenant authorization holes and proved the fix with a role-by-guard test matrix.",
+        "CI on every push: lint, typecheck, 250 unit tests, about 100 integration blocks, a production build and a smoke render of every page per role."
+      ]
+    }
+  },
+  "earlierRoles": [
+    {
+      "title": "Graphic Designer",
+      "company": "AD India",
+      "period": "May 2010 – Jan 2012",
+      "bullets": [
+        "Designed print and digital collateral; a grounding in typography, hierarchy and layout that carries into UI work."
+      ]
+    }
+  ],
+  "moreProjects": [
+    {
+      "title": "SGInnovate",
+      "url": "https://www.sginnovate.com/",
+      "description": "Responsive frontend and custom interactions for the SGInnovate platform.",
+      "tags": ["HTML5", "Bootstrap 5", "jQuery", "Drupal"]
+    },
+    {
+      "title": "Affinidi",
+      "url": "https://www.affinidi.com/",
+      "description": "Reusable React components integrated with a Drupal CMS backend.",
+      "tags": ["React", "Drupal"]
+    }
+  ],
+  "education": [
+    { "title": "Higher Secondary (Class XII)", "school": "Ultadanga Govt. High School, Kolkata", "year": "2001" },
+    { "title": "Secondary (Class X)", "school": "Ultadanga Govt. High School, Kolkata", "year": "1999" }
+  ],
+  "certifications": ["Web Design", "Digital Marketing"],
+  "languages": ["Bengali (native)", "Hindi (fluent)", "English (professional working)"]
+}
